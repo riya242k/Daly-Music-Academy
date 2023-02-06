@@ -1,0 +1,27 @@
+<!-- render the header file before rendering current page -->
+<%- include('includes/header.ejs') %>
+    <main>
+        <div class="loginPage">
+            <h1 style="text-align: center;">Login</h1>
+            <!-- Take user inputs for username and password -->
+            <form action="loginProcess" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username">
+                <br><br>
+                <label for="pwd">Password:</label>
+                <input type="password" name="pwd" id="pwd">
+                <br><br>
+                <input class="submitBtn" type="submit" name="submitBtn" id="submitBtn" value="SUBMIT">
+            </form>
+            <!-- To display error to user in case of incorrect entry for username or password -->
+            <p style="color: black;">
+                <% if(typeof(error) !='undefined' ){ %>
+                    <h2 style="text-align: center;">
+                        <%= error %>
+                    </h2>
+                    <% } %>
+            </p>
+        </div>
+    </main>
+    <!-- render the footer file after rendering current page -->
+    <%- include('includes/footer.ejs') %>
