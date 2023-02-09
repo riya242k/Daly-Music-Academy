@@ -71,7 +71,7 @@ a:hover {
 
 nav {
     padding: 30px 0px;
-    font-size: 14px;
+    font-size: 16px;
     /* font-weight: bold; */
     text-align: center;
 }
@@ -91,7 +91,7 @@ nav a {
     top: -5px;
 } */
 /* .dmaLogo img {
-    width: 97px;
+    width: 105px;
 } */
 /* .headerContainer {
     display: flex;
@@ -110,13 +110,34 @@ Main Css
 ********************************/
 .mainContainer {
     padding-top: 149px;
-    display: grid;
+    /* display: grid; */
     /* grid-template-rows: 1fr; */
 }
 
-.homepageText {
-    width: 89%;
-    margin: 0 auto;
+.wrappedText {
+    /* background-color: purple; */
+    
+}
+
+.wrappedContent {
+    margin: 50px auto;
+    /* font-family: "Open Sans"; */
+    overflow: hidden;
+    width: 85%;
+}
+.wrappedImg {
+    width: 363px;
+    height: 383px;
+    float: left;
+    border-radius: 50px;
+    margin: 10px;
+}
+
+.wrappedImg img {
+    width: 88%;
+    /* padding-top: 70px;
+    float: right;
+    display: inline-block; */
 }
 
 .heroImgSlider {
@@ -147,13 +168,14 @@ Main Css
     text-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
-.musicLessons, .timetable {
+.timetable {
     padding-top: 149px;
     display: grid;
     grid-template-rows: 1fr;
 }
 .musicLessons {
-    padding-top: 149px;
+    display: grid;
+    padding: 110px 26px 0;
     display: inline-block;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -181,13 +203,20 @@ Main Css
 }
 
 .left img {
-    float: left;
+    float: right;
     margin: 5px;
 }
 
-.right p{
-    word-wrap: break-word;
+.musicLessons h2 {
+    text-align: center;
 }
+
+.right ul {
+    
+    width: 62%;
+}
+
+
 /******************************
     Footer css
 /******************************/
