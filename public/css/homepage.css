@@ -29,17 +29,19 @@ a:hover {
     background-color: #f5d29d;
     position: fixed;
     width: 100%;
+    height: 3.8%;
     top: 0px;
     left: 0;
     right: 0;
     z-index: 999;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
     border-radius: 5px;
     border: 2px solid orange;
     letter-spacing: 0.5px;
     color: brown;
 }
+
 .headerContainer {
 
     display: flex;
@@ -52,7 +54,7 @@ a:hover {
     z-index: 999;
     height: 101px;
     padding-top: 13px;
-    
+
 }
 
 .dmaLogo {
@@ -84,6 +86,7 @@ nav a {
     margin-right: 25px;
 
 }
+
 /* css for small header on scroll */
 /* .navMenu {
     right: 30px;
@@ -116,7 +119,7 @@ Main Css
 
 .wrappedText {
     /* background-color: purple; */
-    
+
 }
 
 .wrappedContent {
@@ -125,6 +128,7 @@ Main Css
     overflow: hidden;
     width: 85%;
 }
+
 .wrappedImg {
     width: 363px;
     height: 383px;
@@ -134,7 +138,7 @@ Main Css
 }
 
 .wrappedImg img {
-    width: 88%;
+    width: 82%;
     /* padding-top: 70px;
     float: right;
     display: inline-block; */
@@ -144,21 +148,22 @@ Main Css
     position: relative;
     overflow: hidden;
     height: 500px;
-  }
-  
-  .heroImgSlider img {
+}
+
+.heroImgSlider img {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
 
-  .loginPage {
+.loginPage {
     width: 75%;
     text-align: center;
     margin: auto;
     padding: 20px;
 }
+
 .nameTitle {
     padding: 20px;
     font-size: 35px;
@@ -173,6 +178,7 @@ Main Css
     display: grid;
     grid-template-rows: 1fr;
 }
+
 .musicLessons {
     display: grid;
     padding: 110px 26px 0;
@@ -180,13 +186,26 @@ Main Css
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
 
+    width: 75%;
+    margin: auto;
+    display: block;
 }
 
-.teachers, .instrument_Rent_Purchase, .loginPage {
+.teachers,
+.instrument_Rent_Purchase,
+.loginPage {
     padding-top: 149px;
     display: grid;
     grid-template-rows: 1fr;
+
+    width: 75%;
+    margin: auto;
+    display: block;
 }
+
+
+
+
 
 .gridContact {
     width: 48%;
@@ -195,9 +214,11 @@ Main Css
     padding: 20px;
     display: grid;
     /* grid-template-rows: 0.5fr 0.5fr 0.5fr; */
-    /* grid-gap: 20px; */   
+    /* grid-gap: 20px; */
 }
-.gridContact input, .gridContact textarea {
+
+.gridContact input,
+.gridContact textarea {
     padding: 15px;
     margin: 10px;
 }
@@ -212,7 +233,7 @@ Main Css
 }
 
 .right ul {
-    
+
     width: 62%;
 }
 
@@ -230,7 +251,7 @@ footer {
     border-radius: 5px;
     background-color: #ead7db;
     margin-top: 30px;
-    
+
 }
 
 
@@ -311,6 +332,11 @@ footer {
 .testimonials {
     text-align: center;
     margin-top: 175px;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 75%;
+    display: block;
 }
 
 
@@ -320,9 +346,11 @@ footer {
 .homePageSection2-parent {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-gap: 5px;
+    grid-gap: 29px;
     padding-inline: 20px;
-    border-top: 1px solid black;
+    /* border-top: 1px solid black; */
+    padding: 20px 20px 60px;
+    position: relative;
 }
 
 .homePageSection2-child {
@@ -333,10 +361,11 @@ footer {
 .homePageSection3-parent {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-gap: 5px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    grid-gap: 29px;
+    /* border-top: 1px solid black; */
+    /* border-bottom: 1px solid black; */
     padding-inline: 20px;
+    padding: 20px 20px 60px;
 }
 
 .homePageSection3-child {
@@ -344,7 +373,7 @@ footer {
 }
 
 .profile-card {
-    position: relative;
+    position: absolute;
     width: 220px;
     height: 320px;
     background: #fff;
@@ -352,8 +381,9 @@ footer {
     border-radius: 50%;
     box-shadow: 0 0 22px #3336;
     transition: .6s;
-    margin-left: 25px;
-    margin-top: 70px;
+    margin-top: 28px;
+    /* margin-left: 25px;
+    margin-top: 70px; */
 }
 
 .profile-card:hover {
