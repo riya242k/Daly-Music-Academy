@@ -59,6 +59,9 @@ myApp.get('/testimonials', function (req, res) {
 myApp.get('/timetable', function (req, res) {
     res.render('timetable'); // will render views/timetable.ejs
 });
+myApp.get('/musicLessons', function (req, res) {
+    res.render('musicLessons'); // will render views/timetable.ejs
+});
 // start the server and listen at a port
 myApp.listen(8000);
 
