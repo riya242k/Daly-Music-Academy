@@ -1,43 +1,41 @@
 <!-- render the header file before rendering current page -->
 <%- include('includes/header.ejs') %>
-<main>
-    <div class="containerLogin">
-        <h1>Login</h1>
-        <div class="loginScreen">
-            <!-- login form created with input fields and label -->
-            <form action="loginprocess" method="POST">
-                <div class="loginContainer">
-                    <div class="formFields">   
-                        <label for="username">Username:</label>
+    <main>
+        <div class="containerLogin">
+            <h1>Login</h1>
+            <div class="loginScreen">
+                <!-- login form created with input fields and label -->
+                <form action="loginprocess" method="POST">
+                    <div class="loginContainer">
+                        <div class="formLabels">
+                            <label for="username">Username:</label>
+                        </div>
+                        <div class="formFields">
+                            <input type="text" name="username" id="username">
+                        </div>
+                        <div class="formLabels">
+                            <label for="password">Password:</label>
+                        </div>
+                        <div class="formFields">
+                            <input type="password" name="password" id="password">
+                        </div>
                     </div>
-                    <div class="formFields">
-                        <input type="text" name="username" id="username">
-                    </div> 
-                    <div class="formFields">
-                        <label for="password">Password:</label>
+                    <div class="loginBtn">
+                        <input type="submit" value="Login">
                     </div>
-                    <div class="formFields">
-                        <input type="password" name="password" id="password">
-                    </div>
-                </div>
-                <div class="loginBtn">
-                    <input type="submit" value="Login">
-                </div>
-            </form> 
-            <p style="color: red;text-align: center;">
-                <%
-                    <!-- condition for when typeof is error variable from index.js page inside loginprocess and it is undefined then show error message  -->
-                    if(typeof(error) != 'undefined'){
+                </form>
+                <p style="color: red;text-align: center;">
+                    <% <!-- condition for when typeof is error variable from index.js page inside loginprocess and it is
+                        undefined then show error message -->
+                        if(typeof(error) != 'undefined'){
                         %>
                         <!-- error variable to show error message -->
                         <%= error %> !
-                        <%
-                    }
-                %>
-            </p>
+                            <% } %>
+                </p>
+            </div>
         </div>
-    </div>
-    
-</main>
+
+    </main>
     <!-- render the footer file after rendering current page -->
     <%- include('includes/footer.ejs') %>

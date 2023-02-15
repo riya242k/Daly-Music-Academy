@@ -12,6 +12,7 @@ body {
     /* background-color: #f9dbd040; */
     /* background-color: #F0EFEF; */
     background-color: #fffbf5;
+    line-height: 25px;
 }
 
 a {
@@ -90,9 +91,9 @@ nav a {
 
 nav a {
     text-decoration: none;
-  }
-  
-  nav a::before {
+}
+
+nav a::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -105,12 +106,12 @@ nav a {
     transform-origin: right;
     transform: scaleX(0);
     transition: transform .3s ease-in-out;
-  }
-  
-  nav a:hover::before {
+}
+
+nav a:hover::before {
     transform-origin: left;
     transform: scaleX(1);
-  }
+}
 
 /* nav a:hover {
     text-decoration: double;
@@ -140,10 +141,10 @@ nav a {
 }
 
 .loginContainer {
-    display: grid; 
+    display: grid;
     grid-template-columns: 150px 200px;
     grid-gap: 20px;
-    margin-top: 8%;   
+    margin-top: 8%;
 }
 
 .loginScreen {
@@ -176,6 +177,7 @@ nav a {
     width: 100%;
     padding: 10px;
 }
+
 /* css for small header on scroll */
 /* .navMenu {
     right: 30px;
@@ -535,17 +537,19 @@ footer {
 }
 
 
-@media  screen and (max-width: 1920px) {
-   
+@media screen and (max-width: 1920px) {
+
 
     .announcement {
         font-size: 12px;
         height: 33px;
         line-height: 7.6px;
     }
+
     .headerContainer {
         top: 37px;
     }
+
     .teachers {
         width: 93%;
     }

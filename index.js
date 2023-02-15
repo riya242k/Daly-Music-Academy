@@ -56,8 +56,8 @@ myApp.get('/teachers', function (req, res) {
 myApp.get('/testimonials', function (req, res) {
     res.render('testimonials'); // will render views/testimonials.ejs
 });
-myApp.get('/timetable', function (req, res) {
-    res.render('timetable'); // will render views/timetable.ejs
+myApp.get('/rockAndOrchestraCamp', function (req, res) {
+    res.render('rockAndOrchestraCamp'); // will render views/rockAndOrchestraCamp.ejs
 });
 myApp.get('/musicLessons', function (req, res) {
     res.render('musicLessons'); // will render views/timetable.ejs
