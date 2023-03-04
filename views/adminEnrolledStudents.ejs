@@ -1,0 +1,50 @@
+<!-- render the header file before rendering current page -->
+<main>
+    <div class="adminEnrolledStudents">
+        <h1 style="text-align: center;">Enrolled Students</h1>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>User Status</th>
+                    <th>Pmt Status</th>
+                    <th>Login Created</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+
+                <!-- iteratig over userTickets list to display list of records to user -->
+                <% if(typeof(enrolledUsers) !='undefined' ) { for(user of enrolledUsers){ %>
+                    <tr>
+                        <td>
+                            <a href="/view/<%= user._id %>">
+                                <%= user.userName %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= user.userPassword %>
+                        </td>
+                        <td>
+                            <%= user.userStatus %>
+                        </td>
+                        <td>
+                            <%= user.userPaymentStatus %>
+                        </td>
+                        <td>
+                            <%= user.userIsLoginCreated%>
+                        </td>
+                        <td>
+                            <a href="/edit/<%= user._id %>">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/delete/<%= user._id %>">Delete</a>
+                        </td>
+                    </tr>
+                    <% } } %>
+            </tbody>
+        </table>
+    </div>
+</main>
+<!-- render the footer file after rendering current page -->

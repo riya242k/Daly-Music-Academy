@@ -1,7 +1,79 @@
 <%- include('includes/header.ejs') %>
-
-    <div>
-        <h2>Register </h2>
-    </div>
-
+    <main>
+        <div class="registerScreen">
+            <h1 style="text-align: center;">Register</h1>
+            <!-- Take user inputs for username and password -->
+            <form action="/submitRegistration" method="POST" enctype="application/json">
+                <div class="loginContainer">
+                    <div class="formLabels">
+                        <label for="username">Name:</label>
+                    </div>
+                    <div class="formFields">
+                        <input type="text" name="username" id="username">
+                    </div>
+                    <div class="formLabels">
+                        <label for="address">Address:</label>
+                    </div>
+                    <div class="formFields">
+                        <input type="text" name="address" id="address">
+                    </div>
+                    <div class="formLabels">
+                        <label for="phone">Telephone/Cell:</label>
+                    </div>
+                    <div class="formFields">
+                        <input type="text" name="phone" id="phone">
+                    </div>
+                    <div class="formLabels">
+                        <label for="email">Email:</label>
+                    </div>
+                    <div class="formFields">
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <div class="formLabels">
+                        <label for="age">Age:</label>
+                    </div>
+                    <div class="formFields">
+                        <input type="text" name="age" id="age">
+                    </div>
+                    <div class="formLabels">
+                        <label for="playingLevel">Playing Level:</label>
+                    </div>
+                    <div class="formFields">
+                        <select name="playingLevel" id="playingLevel">
+                            <option value="experienced">Experienced</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="beginner">Beginner</option>
+                        </select>
+                    </div>
+                    <div class="formLabels">
+                        <label for="yearsOfPlayingExperience">Years of Playing Experience:</label>
+                    </div>
+                    <div class="formFields">
+                        <input type="text" name="yearsOfPlayingExperience" id="yearsOfPlayingExperience">
+                    </div>
+                    <div class="formLabels">
+                        <label for="instrument">Instrument</label>
+                    </div>
+                    <div class="formFields">
+                        <select name="instrument" id="instrument">
+                            <option value="violin">Violin</option>
+                            <option value="viola">Viola</option>
+                            <option value="Piano">piano</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="loginBtn">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+            <!-- To display error to user in case of incorrect entry for username or password -->
+            <p style="color: black;">
+                <% if(typeof(error) !='undefined' ){ %>
+                    <h2 style="text-align: center;">
+                        <%= error %>
+                    </h2>
+                    <% } %>
+            </p>
+        </div>
+    </main>
     <%- include('includes/footer.ejs') %>

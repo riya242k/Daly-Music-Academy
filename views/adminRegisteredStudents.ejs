@@ -1,0 +1,62 @@
+<!-- render the header file before rendering current page -->
+<main>
+    <div class="adminRegisteredStudents">
+        <h1 style="text-align: center;">Registered Students</h1>
+
+        <table>
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Age</th>
+                    <th>Instrument</th>
+                    <th>User Status</th>
+                    <th>Pmt Status</th>
+                    <th>Login Created</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+
+                <!-- iteratig over userTickets list to display list of records to user -->
+                <% if(typeof(registeredUsers) !='undefined' ) { for(user of registeredUsers){ %>
+                    <tr>
+                        <td>
+                            <a href="/view/<%= user._id %>">
+                                <%= user.userName %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= user.userEmail %>
+                        </td>
+                        <td>
+                            <%= user.userPhone %>
+                        </td>
+                        <td>
+                            <%= user.userAge %>
+                        </td>
+                        <td>
+                            <%= user.userInstrument %>
+                        </td>
+                        <td>
+                            <%= user.userStatus %>
+                        </td>
+                        <td>
+                            <%= user.userPaymentStatus %>
+                        </td>
+                        <td>
+                            <%= user.userIsLoginCreated%>
+                        </td>
+                        <td>
+                        <td>
+                            <a href="/edit/<%= user._id %>">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/delete/<%= user._id %>">Delete</a>
+                        </td>
+                    </tr>
+                    <% } } %>
+            </tbody>
+        </table>
+    </div>
+</main>

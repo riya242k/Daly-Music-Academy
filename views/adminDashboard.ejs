@@ -1,0 +1,39 @@
+<%- include('includes/header.ejs') %>
+
+    <div class="adminDashboard">
+        <main class="parent-grid">
+            <aside class="child-grid-sidebar">
+                <p onclick="adminDashboardSetState('adminPostAnnouncement')"> Post Announcement</p>
+                <p onclick="adminDashboardSetState('adminRegisteredStudents')">
+                    <a target="display-adminRegisteredStudents" href="/adminRegisteredStudents"> Registered Students
+                    </a>
+                </p>
+                <p onclick="adminDashboardSetState('adminEnrolledStudents')">
+                    <a target="display-adminEnrolledStudents" href="/adminEnrolledStudents"> Enrolled Students
+                    </a>
+                </p>
+                <p onclick="adminDashboardSetState('adminCreateStudentLogin')">
+                    <a target="display-adminCreateStudentLogin" href="/adminCreateStudentLogin"> Create Student Login
+                    </a>
+                </p>
+
+            </aside>
+            <content id="adminDashboardContent" class="child-grid-content">
+                <div id="adminPostAnnouncement">
+                    <%- include('adminPostAnnouncement.ejs') %>
+                </div>
+                <div id="adminRegisteredStudents">
+                    <iframe name="display-adminRegisteredStudents" style="width:90%;height:600px"></iframe>
+                </div>
+                <div id="adminEnrolledStudents">
+                    <iframe name="display-adminEnrolledStudents" style="width:90%;height:600px"></iframe>
+                </div>
+                <div id="adminCreateStudentLogin">
+                    <iframe name="display-adminCreateStudentLogin" style="width:90%;height:600px"></iframe>
+                </div>
+
+            </content>
+        </main>
+    </div>
+
+    <%- include('includes/footer.ejs') %>

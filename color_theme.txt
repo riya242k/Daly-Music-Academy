@@ -1,0 +1,37 @@
+color theme for daly music website
+
+#BF2A37
+#3B3C40
+#F2F2F2
+#BF5A36
+#F2A88D
+
+gradient
+#C0282E
+#F0EFEF
+#C0282E
+
+body - #fffbf5
+header - #f8f4ea
+I think this color look better for header - #e7e0d1
+
+/* Color Theme Swatches in Hex */
+.music-12851651920-1-hex { color: #000057; }
+.music-12851651920-2-hex { color: #730000; }
+.music-12851651920-3-hex { color: #F00000; }
+.music-12851651920-4-hex { color: #00003B; }
+.music-12851651920-5-hex { color: #F00000; }
+
+/* Color Theme Swatches in RGBA */
+.music-12851651920-1-rgba { color: rgba(NaN, NaN, 86, 1); }
+.music-12851651920-2-rgba { color: rgba(114, NaN, NaN, 1); }
+.music-12851651920-3-rgba { color: rgba(239, NaN, NaN, 1); }
+.music-12851651920-4-rgba { color: rgba(NaN, NaN, 58, 1); }
+.music-12851651920-5-rgba { color: rgba(239, NaN, NaN, 1); }
+
+/* Color Theme Swatches in HSLA */
+.music-12851651920-1-hsla { color: hsla(0, NaN, NaN, 1); }
+.music-12851651920-2-hsla { color: hsla(0, NaN, NaN, 1); }
+.music-12851651920-3-hsla { color: hsla(0, NaN, NaN, 1); }
+.music-12851651920-4-hsla { color: hsla(0, NaN, NaN, 1); }
+.music-12851651920-5-hsla { color: hsla(0, NaN, NaN, 1); }
