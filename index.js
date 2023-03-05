@@ -36,6 +36,7 @@ myApp.set('view engine', 'ejs');
 
 // Define model for storing user created tickets to DB
 const RegisteredUser = mongoose.model('RegisteredUser', {
+    userId: String,
     userName: String,
     userAddress: String,
     userEmail: String,
@@ -141,6 +142,7 @@ myApp.post('/submitRegistration', function (req, res) {
     // fetching the user inputs
     console.log("Request Body");
     console.log(req.body);
+    var userId = "123";
     var userName = req.body.username;
     var userAddress = req.body.address;
     var userEmail = req.body.email;
@@ -155,6 +157,7 @@ myApp.post('/submitRegistration', function (req, res) {
 
     // create an object with the fetched data to send to the view
     var pageData = {
+        userId: userId,
         userName: userName,
         userAddress: userAddress,
         userEmail: userEmail,
@@ -190,15 +193,56 @@ myApp.get('/adminRegisteredStudents', function (req, res) {
     });
 });
 
+// edit process page to update the data in DB
+myApp.post('/editRegisteredSudentsSuccess', function (req, res) {
+    console.log('req body reg:');
+    console.log(req.body);
+    console.log('req body length reg:');
+    console.log(req.body.id.length);
+
+    for (var i = 0; i < req.body.id.length; i++) {
+
+        RegisteredUser.findByIdAndUpdate(req.body.id[i], {
+            userId: req.body.userId[i],
+            userName: req.body.username[i],
+            // userAddress: req.body.address[i],
+            userEmail: req.body.userEmail[i],
+            userPhone: req.body.userPhone[i],
+            userAge: req.body.userAge[i],
+            // userPlayingLevel: req.body.playingLevel[i],
+            // userExperienceInYears: req.body.yearsOfPlayingExperience[i],
+            userInstrument: req.body.userInstrument[i],
+            userIsLoginCreated: req.body.userIsLoginCreated[i],
+            userPaymentStatus: req.body.userPaymentStatus[i],
+            userStatus: req.body.userStatus[i],
+        },
+            function (err, docs) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    console.log("Updated Successfully : ");
+                }
+            });
+    }
+
+    //create an object to send to the view
+    var responseData = {
+        resMessage: 'Your request has been successfully updated'
+    }
+    //create an object to send to the view
+    res.render('messagePage', responseData);
+});
+
 myApp.post('/adminCreateLogin', function (req, res) {
     // fetching the user inputs
     console.log("Request Body");
     console.log(req.body);
     var userName = req.body.username; //IMP: keep this as email, to have some link in reg and login record
     var userPassword = req.body.password;
-    var userIsLoginCreated = false;
-    var userPaymentStatus = "Pending";
-    var userStatus = "Inactive";
+    var userIsLoginCreated = true;
+    var userPaymentStatus = "clear";
+    var userStatus = "active";
 
     // create an object with the fetched data to send to the view
     var pageData = {
@@ -232,6 +276,40 @@ myApp.get('/adminEnrolledStudents', function (req, res) {
     });
 });
 
+// edit process page to update the data in DB
+myApp.post('/editEnrolledSudentsSuccess', function (req, res) {
+    console.log('req body:');
+    console.log(req.body);
+    console.log('req body length:');
+    console.log(req.body.id.length);
+    for (var i = 0; i < req.body.id.length; i++) {
+
+        EnrolledUser.findByIdAndUpdate(req.body.id[i], {
+            userName: req.body.username[i],
+            userPassword: req.body.userPassword[i],
+            userIsLoginCreated: req.body.userIsLoginCreated[i],
+            userPaymentStatus: req.body.userPaymentStatus[i],
+            userStatus: req.body.userStatus[i]
+        },
+            function (err, docs) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    console.log("Updated Successfully : ");
+                }
+            });
+
+    }
+    // console.log('enrolledUsersArray:');
+    // console.log(enrolledUsersArray);
+    var responseData = {
+        resMessage: 'Your request has been successfully updated'
+    }
+    //create an object to send to the view
+    res.render('messagePage', responseData);
+});
+
 myApp.get('/adminCreateStudentLogin', function (req, res) {
     res.render('adminCreateStudentLogin.ejs'); // will render views/faq.ejs
 });
@@ -261,12 +339,9 @@ myApp.get('/musicLessons', function (req, res) {
     res.render('musicLessons'); // will render views/timetable.ejs
 });
 
-
-
 myApp.get('/adminDashboard', function (req, res) {
     res.render('adminDashboard'); // will render views/timetable.ejs
 });
-
 
 // start the server and listen at a port
 myApp.listen(8020);

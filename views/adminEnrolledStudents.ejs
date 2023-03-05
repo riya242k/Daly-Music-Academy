@@ -6,43 +6,67 @@
         <table>
             <tbody>
                 <tr>
+                    <th>Details</th>
                     <th>Name</th>
                     <th>Password</th>
                     <th>User Status</th>
                     <th>Pmt Status</th>
                     <th>Login Created</th>
-                    <th>Edit</th>
+                    <!-- <th>Edit</th> -->
                     <th>Delete</th>
                 </tr>
 
                 <!-- iteratig over userTickets list to display list of records to user -->
                 <% if(typeof(enrolledUsers) !='undefined' ) { for(user of enrolledUsers){ %>
-                    <tr>
-                        <td>
-                            <a href="/view/<%= user._id %>">
-                                <%= user.userName %>
-                            </a>
-                        </td>
-                        <td>
-                            <%= user.userPassword %>
-                        </td>
-                        <td>
-                            <%= user.userStatus %>
-                        </td>
-                        <td>
-                            <%= user.userPaymentStatus %>
-                        </td>
-                        <td>
-                            <%= user.userIsLoginCreated%>
-                        </td>
-                        <td>
-                            <a href="/edit/<%= user._id %>">Edit</a>
-                        </td>
-                        <td>
-                            <a href="/delete/<%= user._id %>">Delete</a>
-                        </td>
-                    </tr>
-                    <% } } %>
+                    <form action="editEnrolledSudentsSuccess" method="POST" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="id" value="<%= user._id %>">
+                        <tr>
+                            <td>
+                                <a href="/view/<%= user._id %>">
+                                    12345
+                                </a>
+                            </td>
+                            <td>
+                                <input type="text" value="<%= user.userName %>" name="username" id="username">
+                            </td>
+                            <td>
+                                <input type="text" value="<%= user.userPassword %>" name="userPassword"
+                                    id="userPassword">
+                            </td>
+                            <td>
+                                <select name="userStatus" id="userStatus">
+                                    <option value="active" selected>Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                                <!-- <%= user.userStatus %> -->
+                            </td>
+                            <td>
+                                <select name="userPaymentStatus" id="userPaymentStatus">
+                                    <option value="clear" selected> Clear</option>
+                                    <option value="pending">Pending</option>
+                                </select>
+                                <!-- <%= user.userPaymentStatus %> -->
+                            </td>
+                            <td>
+                                <select name="userIsLoginCreated" id="userIsLoginCreated">
+                                    <option value="true" selected> Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                                <!-- <%= user.userIsLoginCreated%> -->
+                            </td>
+                            <!-- <td>
+                                <a href="/edit/<%= user._id %>">Edit</a>
+                            </td> -->
+                            <td>
+                                <a href="/delete/<%= user._id %>">Delete</a>
+                            </td>
+                        </tr>
+
+
+                        <% } } %>
+                            <input type="button" value="Cancel">
+                            <input type="submit" value="Update">
+                    </form>
             </tbody>
         </table>
     </div>
