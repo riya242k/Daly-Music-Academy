@@ -36,7 +36,7 @@ myApp.set('view engine', 'ejs');
 
 // Define model for storing user created tickets to DB
 const RegisteredUser = mongoose.model('RegisteredUser', {
-    userId: String,
+    userRegistrationNumber: String,
     userName: String,
     userAddress: String,
     userEmail: String,
@@ -52,6 +52,7 @@ const RegisteredUser = mongoose.model('RegisteredUser', {
 
 // Define model for storing user created tickets to DB
 const EnrolledUser = mongoose.model('EnrolledUser', {
+    userRegistrationNumber: String,
     userName: String,
     userPassword: String,
     userStatus: String,
@@ -142,7 +143,7 @@ myApp.post('/submitRegistration', function (req, res) {
     // fetching the user inputs
     console.log("Request Body");
     console.log(req.body);
-    var userId = "123";
+    var userRegistrationNumber = "123";
     var userName = req.body.username;
     var userAddress = req.body.address;
     var userEmail = req.body.email;
@@ -157,7 +158,7 @@ myApp.post('/submitRegistration', function (req, res) {
 
     // create an object with the fetched data to send to the view
     var pageData = {
-        userId: userId,
+        userRegistrationNumber: userRegistrationNumber,
         userName: userName,
         userAddress: userAddress,
         userEmail: userEmail,
@@ -203,7 +204,6 @@ myApp.post('/editRegisteredSudentsSuccess', function (req, res) {
     for (var i = 0; i < req.body.id.length; i++) {
 
         RegisteredUser.findByIdAndUpdate(req.body.id[i], {
-            userId: req.body.userId[i],
             userName: req.body.username[i],
             // userAddress: req.body.address[i],
             userEmail: req.body.userEmail[i],
@@ -234,34 +234,6 @@ myApp.post('/editRegisteredSudentsSuccess', function (req, res) {
     res.render('messagePage', responseData);
 });
 
-myApp.post('/adminCreateLogin', function (req, res) {
-    // fetching the user inputs
-    console.log("Request Body");
-    console.log(req.body);
-    var userName = req.body.username; //IMP: keep this as email, to have some link in reg and login record
-    var userPassword = req.body.password;
-    var userIsLoginCreated = true;
-    var userPaymentStatus = "clear";
-    var userStatus = "active";
-
-    // create an object with the fetched data to send to the view
-    var pageData = {
-        userName: userName,
-        userPassword: userPassword,
-        userIsLoginCreated: userIsLoginCreated,
-        userPaymentStatus: userPaymentStatus,
-        userStatus: userStatus
-    }
-
-    // Create an instance of the userTicket model, pass the data to be saved and save the entry.
-    var newUserEnrollment = new EnrolledUser(pageData);
-    newUserEnrollment.save();
-    var responseData = {
-        resMessage: 'Your request has been successfully submitted'
-    }
-    // send the data to the view and render it
-    res.render('messagePage', responseData);
-});
 
 myApp.get('/adminEnrolledStudents', function (req, res) {
     // to fetch the data from DB
@@ -312,6 +284,79 @@ myApp.post('/editEnrolledSudentsSuccess', function (req, res) {
 
 myApp.get('/adminCreateStudentLogin', function (req, res) {
     res.render('adminCreateStudentLogin.ejs'); // will render views/faq.ejs
+});
+
+
+myApp.post('/adminCreateLogin', function (req, res) {
+    // fetching the user inputs
+    console.log("Request Body");
+    console.log(req.body);
+    var userName = req.body.username; //IMP: keep this as email, to have some link in reg and login record
+    var userPassword = req.body.password;
+    var userIsLoginCreated = true;
+    var userPaymentStatus = "clear";
+    var userStatus = "active";
+
+    // create an object with the fetched data to send to the view
+    var pageData = {
+        userName: userName,
+        userPassword: userPassword,
+        userIsLoginCreated: userIsLoginCreated,
+        userPaymentStatus: userPaymentStatus,
+        userStatus: userStatus
+    }
+
+    // Create an instance of the userTicket model, pass the data to be saved and save the entry.
+    var newUserEnrollment = new EnrolledUser(pageData);
+    newUserEnrollment.save();
+    var responseData = {
+        resMessage: 'Your request has been successfully submitted'
+    }
+    // send the data to the view and render it
+    res.render('messagePage', responseData);
+});
+
+myApp.get('/confirmRegistration/:id', function (req, res) {
+
+    var id = req.params.id;
+    var userRegistrationNumber;
+    var userName;
+    var userPassword;
+    var userIsLoginCreated;
+    var userPaymentStatus;
+    var userStatus;
+    RegisteredUser.findById(id, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            userRegistrationNumber = docs.userRegistrationNumber;
+            userName = docs.userName;
+            userPassword = "DMA@" + docs.userName.replace(/\s/g, "-") + "_" + docs.userAge;
+            userIsLoginCreated = true;
+            userPaymentStatus = "clear";
+            userStatus = "active";
+
+            var pageData = {
+                userRegistrationNumber: userRegistrationNumber,
+                userName: userName,
+                userPassword: userPassword,
+                userIsLoginCreated: userIsLoginCreated,
+                userPaymentStatus: userPaymentStatus,
+                userStatus: userStatus
+            }
+
+            // Create an instance of the userTicket model, pass the data to be saved and save the entry.
+            var newUserEnrollment = new EnrolledUser(pageData);
+            newUserEnrollment.save();
+        }
+    });
+
+    var responseData = {
+        resMessage: 'Your request has been successfully submitted'
+    }
+    // send the data to the view and render it
+    res.render('messagePage', responseData);
 });
 
 myApp.get('/faq', function (req, res) {

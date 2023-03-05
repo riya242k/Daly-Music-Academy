@@ -22,12 +22,13 @@
                 <!-- iteratig over userTickets list to display list of records to user -->
                 <% if(typeof(registeredUsers) !='undefined' ) { for(user of registeredUsers){ %>
                     <form action="editRegisteredSudentsSuccess" method="POST" enctype="application/json">
+
                         <input type="hidden" name="id" value="<%= user._id %>">
                         <tr>
                             <td>
-                                <a href="/view/<%= user._id %>">
-                                    <input type="text" name="userId" id="userId" value="<%= user.userRegNumber %>">
-                                </a>
+                                <!-- <a href="/view/<%= user._id %>"></a> -->
+                                <input type="text" name="userRegistrationNumber" id="userRegistrationNumber"
+                                    value="<%= user.userRegistrationNumber %>" disabled>
                             </td>
                             <td>
                                 <input type="text" name="username" id="username" value="<%= user.userName %>">
@@ -48,21 +49,21 @@
                             <td>
                                 <select name="userStatus" id="userStatus">
                                     <option value="active" selected>Active</option>
-                                    <option value="inactive">Inactive</option>
+                                    <option value="inactive" selected>Inactive</option>
                                 </select>
                                 <!-- <%= user.userStatus %> -->
                             </td>
                             <td>
                                 <select name="userPaymentStatus" id="userPaymentStatus">
                                     <option value="clear" selected> Clear</option>
-                                    <option value="pending">Pending</option>
+                                    <option value="pending" selected>Pending</option>
                                 </select>
                                 <!-- <%= user.userPaymentStatus %> -->
                             </td>
                             <td>
                                 <select name="userIsLoginCreated" id="userIsLoginCreated">
-                                    <option value="true" selected> Yes</option>
-                                    <option value="false">No</option>
+                                    <option value="true"> Yes</option>
+                                    <option value="false" selected>No</option>
                                 </select>
                                 <!-- <%= user.userIsLoginCreated%> -->
                             </td>
